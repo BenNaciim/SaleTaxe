@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: SaleTaxes
+  datasource:
+    url: jdbc:postgresql://localhost:5432/SalesDB
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true #ensure that the data initialization script runs after Hibernate has created the schema
+    show-sql: true
+  sql:
+    init:
+      data-locations: classpath:sql/init-data.sql #specify the location of the data initialization script
+      mode: always #always ensures that the data initialization script runs every time the application starts
+  docker:
+    compose:
+      enabled: on
